@@ -8,10 +8,14 @@ getSum = (t) -> t[0] + t[1] + t[2]
 getProduct = (t) -> t[0] * t[1] * t[2]
 findTriplet = (p) -> [k * (sqr(p[1]) - sqr(p[0])), k * (2 * p[1] * p[0]), k * (sqr(p[1]) + sqr(p[0]))]
 isPrime = (num) ->
-  counter = 1
+  c = 3
+  return false if num < 2
   return false if num % 1 isnt 0
-  while (++counter < num)
-    return false if (num <= 1 or num % counter is 0)
+  return false if num isnt 2 and num % 2 is 0
+  while (c <= Math.sqrt(num))
+    return false if num % c is 0
+    # discard even numbers
+    c += 2
   return true
 
 findNextPair = (p) ->
